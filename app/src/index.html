@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta http-equiv="X-UA-Compatible" content = "IE-edge">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+		href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
+        <title>Charity Transparency</title>
+
+        <style>
+            body{
+                margin: 0 auto;
+                padding-left: 30px;
+                padding-right: 30px;
+                width: 960px;
+                color:rgb(53, 52, 52);
+                font:300 16px/22px "Lato","Open Sans","Helvetica Nue",Helvetica,Ariel,sans-serif;
+                background-color: #f9f9f9;
+            }
+
+            h1, h2, p {
+                margin-bottom: 30px;
+            }
+
+            h1{
+                text-align: center;
+                padding:50px;
+                color: #dedddb;
+                background-color: #303c4c;
+                border-radius: 4px;
+            }
+            
+            input, button {
+                border-radius: 5px;
+                font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+                margin: 0;
+            }
+
+            label {
+                display : block;
+                margin-bottom : 5px;
+            }
+
+            .submit {
+                background-color: #303c4c;
+                border: 0;
+                color: #dedddb;
+                cursor: pointer;
+                font-weight: bold;
+                margin-top: 10px;
+                margin-bottom : 10px;
+            }
+            .getSubmit {
+                padding: 6px 16px;
+            }
+
+            .printSubmit {
+                padding : 6px 50px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>CHARITY TRANSPARENCY</h1>
+
+        <div>
+            <h2>ORGANIZATION REGISTRATION</h2>
+            <form>
+                <label for = "orgId">Organization ID</label>
+                <input type = "text" id = "orgId" name = "orgId"><br>
+    
+                <label for = "orgName">Organization Name</label>
+                <input type = "text" id = "orgName" name = "orgName"><br>
+    
+                <label for = "orgAim">Organization Aim</label>
+                <input for = "text" id = "orgAim" name = "orgAim"><br>
+    
+                <label for = "orgWeb">Organization Website</label>
+                <input for = "text" id = "orgWeb" name = "orgWeb"><br>
+    
+                <label for = "orgBal">Organization's Initial Balance</label>
+                <input for = "number" id = "orgBal" name = "orgBal"><br>
+                
+                <input type = "submit" value = "Submit" onclick = "App.setOrganization()" class = "submit getSubmit">
+            </form>
+           
+        </div>
+
+        <div>
+            <h2>ORGANIZATION DETAILS</h2>
+            <label for = "getOrgId">Organization ID</label>
+            <input type = "text" id = "getOrgId" name = "getOrgId"><br>
+            <input type = "submit" value = "Submit" onclick = "App.getOrganization()" class = "submit getSubmit">
+            <p id = "writeDetails"></p>
+        </div>
+
+        <div>
+            <h2>ORGANIZATIONS AVAILABLE</h2>
+            <button onclick = "App.getAllOrganizations()" class = "submit printSubmit">Get Details</button>
+
+            <div id = "printOrgs"></div>
+            
+        </div>
+
+        <div>
+            <h2>DONOR REGISTRATION</h2>
+            <form>
+                <label for = "donId">Donor ID</label>
+                <input type = "text" id = "donId" name = "donId"><br>
+
+                <label for = "donName">Donor Name</label>
+                <input type = "text" id = "donName" name = "donName"><br>
+
+                <input type = "submit" value = "Submit" onclick = "App.setDonor()" class = "submit getSubmit">
+            </form>
+            
+        </div>
+
+        <div>
+            <h2>DONOR DETAILS</h2>
+            <label for = "getDonDet">Donor ID</label>
+            <input type = "text" id = "getDonDet" name = "getDonDet"><br>
+            <input type = "submit" value = "Submit" onclick = "App.getDonor()" class = "submit getSubmit">
+
+            <p id = "writeDonDetails"></p>
+        </div>
+
+        <div>
+            <h2>REGISTERED DONORS</h2>
+            <button onclick = "App.getAllDonors()" class = "submit printSubmit">Get Details</button>
+
+            <div id = "printDonors"></div>
+        </div>
+
+        <div>
+            <h2>DONATIONS</h2>
+            <form>
+                <label for = "donDonId">Donor ID</label>
+                <input type = "text" id = "donDonId" name = "donDonId"><br>
+
+                <label for = "donOrgId'">Organization ID</label>
+                <input type = "text" id = "donOrgId" name = "donOrgId"><br>
+
+                <label for = "donAmt">Donation Amount</label>
+                <input type = "text" id = "donAmt" name = "donAmt"><br>
+
+                <input type ="submit" value = "Submit" onclick = "App.registerDonations()" class = "submit getSubmit">
+            </form>
+            
+        </div>
+
+        <div>
+            <h2>WITHDRAWALS</h2>
+            <form>
+                <label for = "withOrgId">Organization ID</label>
+                <input type = "text" id = "withOrgId" name = "withOrgId"><br>
+
+                <label for = "withAmt">Withdrawal Amount</label>
+                <input type = "text" id = "withAmt" name = "withAmt"><br>
+
+                <label for = "withUse">Use of Amount</label>
+                <input type = "text" id = "withUse" name = "withUse"><br>
+
+                <label for = "withVenName">Vendor Name</label>
+                <input type = "text" id = "withVenName" name = "withVenName"><br>
+
+                <label for = "withVenAdd">Vendor Address</label>
+                <input type = "text" id = "withVenAdd" name = "withVenAdd"><br>
+
+                <input type = "submit" value = "Submit" onclick = "App.registerWithdrawals()" class = "submit getSubmit">
+            </form>
+        </div>
+
+        <div>
+            <h2>DONATIONS REGISTERED</h2>
+            <input type = "submit" value = "Get Details" onclick = "App.getAllDonations()" class = "submit printSubmit">
+
+            <div id = "writeAllDon"></div>
+        </div>
+
+        <div>
+            <h2>WITHDRAWALS REGISTERED</h2>
+                <input type = "submit" value = "Get Details" onclick = "App.getAllWithdrawals()" class = "submit printSubmit">
+
+                <div id = "writeAllWith"></div>
+        </div>
+
+        <script src = "index.js"></script>
+    </body>
+</html>
